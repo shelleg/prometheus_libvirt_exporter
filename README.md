@@ -35,13 +35,25 @@ docker pull beylistan/prometheus_libvirt_exporter
 ### Running
 if you want to run exporter on host itself
 ```
-python prometheus_libvirt_exporter.py -si [scrape interval in seconds] -uri [Uniform Resource Identifier]
+python libvirt_exporter.py -h
+usage: libvirt_exporter.py [-h] [-si SCRAPE_INTERVAL]
+                           [-uri UNIFORM_RESOURCE_IDENTIFIER]
+
+libvirt_exporter scrapes domains metrics from libvirt daemon
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -si SCRAPE_INTERVAL, --scrape_interval SCRAPE_INTERVAL
+                        scrape interval for metrics in seconds
+  -uri UNIFORM_RESOURCE_IDENTIFIER, --uniform_resource_identifier UNIFORM_RESOURCE_IDENTIFIER
+                        Libvirt Uniform Resource Identifier
+
 ```
 if you want to run exporter in docker container
 ```
 docker run -i \                   
    -v /var/run/libvirt/libvirt-sock:/var/run/libvirt/libvirt-sock:Z prometheus_libvirt_exporter \
-   python prometheus_libvirt_exporter.py -si [scrape interval in seconds] -uri [Uniform Resource Identifier]
+   python prometheus_libvirt_exporter.py [-si SCRAPE_INTERVAL] [-uri UNIFORM_RESOURCE_IDENTIFIER]
 ```
 
 
