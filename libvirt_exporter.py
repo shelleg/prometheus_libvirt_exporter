@@ -157,27 +157,28 @@ def job(uri, g_dict, scheduler):
     print('BEGIN JOB :', time.time())
     conn = connect_to_uri(uri)
     domains = get_domains(conn)
-    if domains is None:
-        pass
-    else:
-        for dom in domains:
+    while domains is None:
+        domains = get_domains(conn)
+        time.sleep(5)
 
-            print(dom.name())
+    for dom in domains:
 
-            headers_mn = ["libvirt_cpu_stats_", "libvirt_mem_stats_", \
-                          "libvirt_block_stats_", "libvirt_interface_"]
+        print(dom.name())
 
-            for header_mn in headers_mn:
-                g_dict = add_metrics(dom, header_mn, g_dict)
+        headers_mn = ["libvirt_cpu_stats_", "libvirt_mem_stats_", \
+                      "libvirt_block_stats_", "libvirt_interface_"]
 
-        conn.close()
-        print('FINISH JOB :', time.time())
-        scheduler.enter((int(args["scrape_interval"])), 1, job, (uri, g_dict, scheduler))
+        for header_mn in headers_mn:
+            g_dict = add_metrics(dom, header_mn, g_dict)
+
+    conn.close()
+    print('FINISH JOB :', time.time())
+    scheduler.enter((int(args["scrape_interval"])), 1, job, (uri, g_dict, scheduler))
 
 
 def main():
 
-    start_http_server(9188)
+    start_http_server(9177)
 
     g_dict = {}
 
