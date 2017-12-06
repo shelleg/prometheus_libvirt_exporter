@@ -25,7 +25,23 @@ docker-compose
 
 if you want to run exporter on host itself
 ```
-git 
+git clone https://github.com/beylistan/prometheus_libvirt_exporter.git
 pip install -r requirements.txt
+```
+if you want to run exporter in docker container
+```
+docker pull beylistan/prometheus_libvirt_exporter
+```
+### Running
+if you want to run exporter on host itself
+```
+python prometheus_libvirt_exporter.py -si [scrape interval in seconds] -uri [Uniform Resource Identifier]
+```
+if you want to run exporter in docker container
+```
+docker run -i \                   
+   -v /var/run/libvirt/libvirt-sock:/var/run/libvirt/libvirt-sock:Z prometheus_libvirt_exporter \
+   python prometheus_libvirt_exporter.py -si [scrape interval in seconds] -uri [Uniform Resource Identifier]
+```
 
 
