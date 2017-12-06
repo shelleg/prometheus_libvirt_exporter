@@ -8,12 +8,15 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install 
+What things you need to install in case  
 
-
+if you want to run exporter on host itself
 ```
 python
 pip install -r requirements.txt
+```
+if you want to run exporter in docker container
+```
 docker
 docker-compose
 ```
