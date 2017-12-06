@@ -1,0 +1,2 @@
+libvirt-python==3.7.0
+prometheus-client==0.0.21
