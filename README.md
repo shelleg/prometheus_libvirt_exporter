@@ -47,7 +47,7 @@ What things you need to install in case
 
 if you want to run exporter on host itself
 ```
-python
+python==2.7.13
 libvirt-python==3.7.0
 prometheus-client==0.0.21
 ```
