@@ -86,7 +86,8 @@ optional arguments:
 ```
 if you want to run exporter in docker container
 ```
-docker run -i \                   
+docker run -i \
+   -p 9177:9177
    -v /var/run/libvirt/libvirt-sock:/var/run/libvirt/libvirt-sock:Z prometheus_libvirt_exporter \
    python prometheus_libvirt_exporter.py [-si SCRAPE_INTERVAL] [-uri UNIFORM_RESOURCE_IDENTIFIER]
 ```
