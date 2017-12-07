@@ -159,7 +159,7 @@ def job(uri, g_dict, scheduler):
     domains = get_domains(conn)
     while domains is None:
         domains = get_domains(conn)
-        time.sleep(5)
+        time.sleep(int(args["scrape_interval"]))
 
     for dom in domains:
 
